@@ -1,0 +1,10 @@
+
+
+<div>
+    
+    
+      @livewire($component)
+      
+
+</div>
+ 
