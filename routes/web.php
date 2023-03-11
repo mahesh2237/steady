@@ -7,6 +7,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ResetController;
 use App\Http\Controllers\SessionsController;
 use App\Http\Livewire\Customer\CustomerManagement;
+use App\Http\Livewire\Customer\Profile;
 use App\Http\Livewire\Dashboard\Dashboard;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
@@ -28,7 +29,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/', [HomeController::class, 'home']);
 	Route::get('dashboard', Dashboard::class)->name('dashboard');
-
+    Route::get('/user-profile', Profile::class);
 	Route::get('billing', function () {
 		return view('billing');
 	})->name('billing');
@@ -65,7 +66,7 @@ Route::group(['middleware' => 'auth'], function () {
 	})->name('sign-up');
 
     Route::get('/logout', [SessionsController::class, 'destroy']);
-	Route::get('/user-profile', [InfoUserController::class, 'create']);
+	
 	Route::post('/user-profile', [InfoUserController::class, 'store']);
     Route::get('/login', function () {
 		return view('dashboard');
